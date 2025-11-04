@@ -1,0 +1,7 @@
+<set>
+  <tiles>
+<tile name="Road2T" symmetry="T" weight="1,0"/>
+<tile name="Road1T" symmetry="T" weight="1,0"/>
+	</tiles>
+<neighbors>	</neighbors>
+</set>
