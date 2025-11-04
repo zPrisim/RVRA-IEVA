@@ -112,7 +112,7 @@ public class SimpleTiledWFC : MonoBehaviour{
 						Vector3 fscale = tile.transform.localScale;
 						tile.transform.parent = group;
 						tile.transform.localPosition = pos;
-						tile.transform.localEulerAngles = new Vector3(0, 0, 360-(rot*90));
+						tile.transform.localEulerAngles = new Vector3(0, 90, 360-(rot*90));
 						tile.transform.localScale = fscale;
 						rendering[x,y] = tile;
 					} else
