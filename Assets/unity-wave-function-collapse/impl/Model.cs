@@ -177,7 +177,7 @@ public abstract class Model
 		return true;
 	}
 
-	protected void Ban(int i, int t)
+	public void Ban(int i, int t)
 	{
 		wave[i][t] = false;
 

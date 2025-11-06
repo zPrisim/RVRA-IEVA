@@ -35,8 +35,9 @@ public class SimpleTiledWFC : MonoBehaviour{
  	}
 
  	void Start(){
-		Generate();
-		Run();
+
+        Generate();
+        Run();
 	}
 
 	void Update(){
@@ -84,9 +85,11 @@ public class SimpleTiledWFC : MonoBehaviour{
         rendering = new GameObject[width, depth];
 		this.model = new SimpleTiledModel(xml.text, subset, width, depth, periodic);
         undrawn = true;
+        model.ConstraintGeneration();
+
     }
 
-	public void Draw(){
+    public void Draw(){
 		if (output == null){return;}
 		if (group == null){return;}
         undrawn = false;
