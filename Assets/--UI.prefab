@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5157212535035923511}
   m_Layer: 0
-  m_Name: Ready to Order
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 675414222163723962}
   - component: {fileID: 3935174876763612184}
   m_Layer: 0
-  m_Name: Order Menu
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

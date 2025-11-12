@@ -7,6 +7,7 @@ The software is provided "as is", without warranty of any kind, express or impli
 */
 
 using System;
+using System.Diagnostics;
 
 public abstract class Model
 {
@@ -152,46 +153,39 @@ public abstract class Model
 		}
 	}
 
-	public bool Run(int seed, int limit)
-	{
-		if (wave == null) Init();
+    public bool Run(int seed, int limit, int maxAttempts = 10)
+    {
+        for (int attempt = 0; attempt < maxAttempts; attempt++)
+        {
+            if (wave == null) Init();
 
-		if (!this.init) {
-			this.init = true;
-			this.Clear();
-		}
+            this.init = true;
+            this.Clear();
 
-		if (seed==0) {
-			random = new System.Random();
-		} else {
-			random = new System.Random(seed);
-		}
+            if (seed == 0)
+            {
+                random = new System.Random();
+            }
+            else
+            {
+                random = new System.Random(seed); 
+            }
 
+            FixBorders(8);
 
-		FixBorders(8);
-		
-        //PlaceTile(0, 0, 8);
-        //PlaceTile(0, 1, 8);
-        //PlaceTile(0, 2, 8);
-        //PlaceTile(0, 3, 8);
-        //PlaceTile(0, 4, 8);
-        //PlaceTile(0, 5, 8);
-        //PlaceTile(0, 6, 8);
-        //PlaceTile(0, 7, 8);
-        //PlaceTile(0, 8, 8);
-        //PlaceTile(0, 9, 8);
+            for (int l = 0; l < limit || limit == 0; l++)
+            {
+                bool? result = Observe();
+                if (result == false) break; 
+                if (result == true) return true; 
+                Propagate();
+            }
+        }
 
-        for (int l = 0; l < limit || limit == 0; l++)
-		{
-			bool? result = Observe();
-			if (result != null) return (bool)result;
-			Propagate();
-		}
+        return false; 
+    }
 
-		return true;
-	}
-
-	public void Ban(int i, int t)
+    public void Ban(int i, int t)
 	{
 		wave[i][t] = false;
 
@@ -230,14 +224,15 @@ public abstract class Model
     public void PlaceTile(int x, int y, int tileType)
     {
         if (x < 0 || x >= FMX || y < 0 || y >= FMY)
-            throw new ArgumentOutOfRangeException("Position hors limites.");
+            throw new ArgumentOutOfRangeException("Mauvais indices");
 
         int i = x + y * FMX;
         for (int t = 0; t < T; t++)
         {
             if (t != tileType)
             {
-                Ban(i, t);
+					Ban(i, t);
+				
             }
         }
     }
