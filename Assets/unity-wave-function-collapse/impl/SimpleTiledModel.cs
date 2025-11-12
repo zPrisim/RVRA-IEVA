@@ -11,6 +11,7 @@ using System.Xml;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.CodeDom.Compiler;
 
 public class SimpleTiledModel : Model
 {
@@ -206,20 +207,6 @@ public class SimpleTiledModel : Model
 		return !periodic && (x < 0 || y < 0 || x >= FMX || y >= FMY);
 	}
 
-	public void ConstraintGeneration()
-	{
-		for (int x = 0; x < FMX; x++)
-		{
 
-			for (int t = 0; t < T; t++)
-			{
-				if (t == 3)
-					UnityEngine.Debug.Log("ee");
-					//Ban(x, t);
-			}
-		}
 
-		Propagate();
-
-	}
 }

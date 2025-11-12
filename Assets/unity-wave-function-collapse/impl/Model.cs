@@ -167,7 +167,21 @@ public abstract class Model
 			random = new System.Random(seed);
 		}
 
-		for (int l = 0; l < limit || limit == 0; l++)
+
+		FixBorders(8);
+		
+        //PlaceTile(0, 0, 8);
+        //PlaceTile(0, 1, 8);
+        //PlaceTile(0, 2, 8);
+        //PlaceTile(0, 3, 8);
+        //PlaceTile(0, 4, 8);
+        //PlaceTile(0, 5, 8);
+        //PlaceTile(0, 6, 8);
+        //PlaceTile(0, 7, 8);
+        //PlaceTile(0, 8, 8);
+        //PlaceTile(0, 9, 8);
+
+        for (int l = 0; l < limit || limit == 0; l++)
 		{
 			bool? result = Observe();
 			if (result != null) return (bool)result;
@@ -213,8 +227,48 @@ public abstract class Model
 			entropies[i] = startingEntropy;
 		}
 	}
+    public void PlaceTile(int x, int y, int tileType)
+    {
+        if (x < 0 || x >= FMX || y < 0 || y >= FMY)
+            throw new ArgumentOutOfRangeException("Position hors limites.");
 
-	protected abstract bool OnBoundary(int x, int y);
+        int i = x + y * FMX;
+        for (int t = 0; t < T; t++)
+        {
+            if (t != tileType)
+            {
+                Ban(i, t);
+            }
+        }
+    }
+    public void FixBorders(int tileType)
+    {
+        // Haut
+        for (int x = 0; x < FMX; x++)
+        {
+            PlaceTile(x, 0, tileType);
+        }
+
+		// Bas
+		for (int x = 0; x < FMX; x++)
+		{
+			PlaceTile(x, FMY-1, tileType);
+		}
+
+        // Gauche
+        for (int y = 1; y < FMY - 1; y++)
+        {
+            PlaceTile(0, y, tileType);
+        }
+
+        // Droit
+        for (int y = 1; y < FMY - 1; y++)
+        {
+            PlaceTile(FMX - 1, y, tileType);
+        }
+    }
+
+    protected abstract bool OnBoundary(int x, int y);
 
 	protected static int[] DX = { -1, 0, 1, 0 };
 	protected static int[] DY = { 0, 1, 0, -1 };
