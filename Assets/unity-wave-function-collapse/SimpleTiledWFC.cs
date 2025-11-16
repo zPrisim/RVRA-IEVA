@@ -35,6 +35,7 @@ public class SimpleTiledWFC : MonoBehaviour{
  	}
 
  	void Start(){
+		Model.areBuildingsSaved = false;
         Generate();
         Run();
 	}
@@ -83,8 +84,8 @@ public class SimpleTiledWFC : MonoBehaviour{
         group.localScale = new Vector3(1f, 1f, 1f);
         rendering = new GameObject[width, depth];
 		this.model = new SimpleTiledModel(xml.text, subset, width, depth, periodic);
-
         undrawn = true;
+
     }
 
     public void Draw(){
@@ -124,7 +125,13 @@ public class SimpleTiledWFC : MonoBehaviour{
 			}
   		}	
 	}
+    public void EnableSaveBuilding()
+    {
+		Model.areBuildingsSaved = true;
+    }
 }
+
+
 
 #if UNITY_EDITOR
 [CustomEditor (typeof(SimpleTiledWFC))]

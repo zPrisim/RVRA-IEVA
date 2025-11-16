@@ -7,7 +7,10 @@ The software is provided "as is", without warranty of any kind, express or impli
 */
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEditor.PackageManager.UI;
+using UnityEngine.Tilemaps;
 
 public abstract class Model
 {
@@ -32,8 +35,11 @@ public abstract class Model
 	int[] sumsOfOnes;
 	double sumOfWeights, sumOfWeightLogWeights, startingEntropy;
 	double[] sumsOfWeights, sumsOfWeightLogWeights, entropies;
-
-	protected Model(int width, int height)
+    protected List<int> buildingsTilesIndexList = new List<int>();
+    protected static Dictionary<int, int> savedBuildingsList = new Dictionary<int, int>();
+    protected static bool areBuildingsLocked = false;
+	public static bool areBuildingsSaved = false;
+    protected Model(int width, int height)
 	{
 		FMX = width;
 		FMY = height;
@@ -158,7 +164,6 @@ public abstract class Model
         for (int attempt = 0; attempt < maxAttempts; attempt++)
         {
             if (wave == null) Init();
-
             this.init = true;
             this.Clear();
 
@@ -168,22 +173,37 @@ public abstract class Model
             }
             else
             {
-                random = new System.Random(seed); 
+                random = new System.Random(seed);
             }
 
+
+			// On met des tiles vides sur les bordures de la carte
             FixBorders(8);
 
-            for (int l = 0; l < limit || limit == 0; l++)
-            {
+            int centerX = FMX / 2;
+            int centerY = FMY / 2;
+
+			// On place une tile vide au millieu de la carte (apparition VR)
+			PlaceTile(centerX, centerY, 8);
+
+
+			if(areBuildingsSaved) RestoreBuildings();
+
+           for (int l = 0; l < limit || limit == 0; l++)
+           {
                 bool? result = Observe();
-                if (result == false) break; 
-                if (result == true) return true; 
+                if (result == false) break;
+                if (result == true)
+                {
+                    if (areBuildingsSaved) SaveBuildings();
+                    return true;
+                }
                 Propagate();
             }
         }
-
-        return false; 
+        return false;
     }
+
 
     public void Ban(int i, int t)
 	{
@@ -221,21 +241,25 @@ public abstract class Model
 			entropies[i] = startingEntropy;
 		}
 	}
+
     public void PlaceTile(int x, int y, int tileType)
     {
         if (x < 0 || x >= FMX || y < 0 || y >= FMY)
-            throw new ArgumentOutOfRangeException("Mauvais indices");
+            throw new ArgumentOutOfRangeException("Mauvais indice");
 
         int i = x + y * FMX;
         for (int t = 0; t < T; t++)
         {
             if (t != tileType)
             {
-					Ban(i, t);
+				Ban(i, t);
 				
             }
         }
     }
+
+
+
     public void FixBorders(int tileType)
     {
         // Haut
@@ -262,6 +286,53 @@ public abstract class Model
             PlaceTile(FMX - 1, y, tileType);
         }
     }
+    protected void SaveBuildings()
+    {
+        // Si les bâtiments sont déjà verrouillés, ne rien faire
+        if (areBuildingsLocked) return;
+
+        savedBuildingsList.Clear();
+
+        for (int i = 0; i < wave.Length; i++)
+        {
+            for (int t = 0; t < T; t++)
+            {
+                if (buildingsTilesIndexList.Contains(t) && wave[i][t])
+                {
+                    if (!savedBuildingsList.ContainsKey(i))
+                    {
+                        savedBuildingsList.Add(i, t);
+                    }
+                }
+            }
+        }
+
+        // Verrouiller les bâtiments après la première génération
+        areBuildingsLocked = true;
+    }
+
+
+
+    protected void RestoreBuildings()
+    {
+        foreach (var entry in savedBuildingsList)
+        {
+            int i = entry.Key;
+            int t = entry.Value;
+            PlaceTile(i % FMX, i / FMX, t);
+        }
+    }
+
+
+	// fonction permettant de repasser à une génération normale
+	// non utilisée pour le moment
+    public void UnlockBuildings()
+    {
+        areBuildingsLocked = false;
+        savedBuildingsList.Clear();
+    }
+
+
 
     protected abstract bool OnBoundary(int x, int y);
 

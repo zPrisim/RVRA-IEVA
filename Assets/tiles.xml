@@ -6,76 +6,67 @@
 <tile name="roads/EmptyX" symmetry="X" weight="1,0"/>
 <tile name="Building/EmptyAndBuildings2l" symmetry="X" weight="1,0"/>
 <tile name="roads/RoadX" symmetry="X" weight="1,0"/>
-<tile name="roads/RoadT" symmetry="T" weight="1,0"/>
+<tile name="Building/Building20" symmetry="X" weight="1,0"/>
 	</tiles>
-<neighbors>  <neighbor left="roads/RoadL 1" right="roads/RoadI 0"/>
+<neighbors>  <neighbor left="roads/EmptyX 0" right="roads/RoadL 1"/>
+  <neighbor left="roads/RoadL 1" right="roads/RoadI 0"/>
   <neighbor left="roads/RoadL 2" right="roads/RoadI 0"/>
   <neighbor left="roads/RoadI 0" right="roads/RoadL 0"/>
   <neighbor left="roads/RoadI 1" right="roads/EmptyX 1"/>
-  <neighbor left="roads/RoadL 0" right="roads/EmptyX 0"/>
   <neighbor left="roads/RoadL 1" right="roads/RoadI 0"/>
-  <neighbor left="roads/EmptyX 1" right="Building/EmptyAndBuildingsI 0"/>
-  <neighbor left="roads/RoadI 1" right="Building/EmptyAndBuildings2l 1"/>
-  <neighbor left="roads/RoadL 1" right="roads/RoadI 2"/>
-  <neighbor left="roads/RoadI 2" right="roads/RoadL 0"/>
-  <neighbor left="roads/EmptyX 0" right="Building/EmptyAndBuildings2l 1"/>
-  <neighbor left="Building/EmptyAndBuildings2l 1" right="roads/RoadI 3"/>
-  <neighbor left="roads/RoadI 3" right="roads/EmptyX 0"/>
   <neighbor left="roads/RoadI 0" right="roads/RoadI 0"/>
+  <neighbor left="roads/RoadI 3" right="roads/EmptyX 0"/>
   <neighbor left="roads/EmptyX 0" right="roads/RoadI 3"/>
   <neighbor left="roads/EmptyX 1" right="roads/EmptyX 3"/>
   <neighbor left="roads/RoadI 3" right="Building/EmptyAndBuildingsI 3"/>
   <neighbor left="Building/EmptyAndBuildingsI 0" right="Building/EmptyAndBuildings2l 0"/>
-  <neighbor left="Building/EmptyAndBuildings2l 0" right="roads/EmptyX 0"/>
-  <neighbor left="Building/EmptyAndBuildings2l 1" right="roads/RoadI 1"/>
-  <neighbor left="roads/EmptyX 1" right="roads/RoadI 1"/>
+  <neighbor left="Building/EmptyAndBuildingsI 1" right="roads/RoadI 3"/>
+  <neighbor left="Building/EmptyAndBuildingsI 2" right="roads/RoadI 1"/>
+  <neighbor left="roads/RoadI 3" right="Building/EmptyAndBuildings2l 3"/>
   <neighbor left="roads/RoadI 0" right="roads/RoadX 1"/>
-  <neighbor left="roads/RoadI 0" right="roads/RoadT 0"/>
+  <neighbor left="Building/EmptyAndBuildings2l 0" right="roads/RoadI 1"/>
   <neighbor left="roads/RoadI 3" right="roads/EmptyX 2"/>
   <neighbor left="roads/EmptyX 2" right="roads/RoadI 3"/>
   <neighbor left="roads/EmptyX 3" right="Building/EmptyAndBuildingsI 2"/>
-  <neighbor left="roads/RoadI 3" right="Building/EmptyAndBuildings2l 3"/>
-  <neighbor left="roads/RoadI 0" right="roads/RoadT 2"/>
-  <neighbor left="Building/EmptyAndBuildings2l 3" right="roads/RoadL 1"/>
-  <neighbor left="Building/EmptyAndBuildings2l 0" right="roads/RoadI 1"/>
-  <neighbor left="roads/RoadL 2" right="roads/RoadL 0"/>
   <neighbor left="roads/RoadI 0" right="roads/RoadI 0"/>
   <neighbor left="roads/RoadI 0" right="roads/RoadX 0"/>
+  <neighbor left="roads/RoadI 1" right="Building/EmptyAndBuildingsI 2"/>
   <neighbor left="roads/RoadX 0" right="roads/RoadI 0"/>
   <neighbor left="roads/RoadX 1" right="roads/RoadI 0"/>
-  <neighbor left="roads/RoadI 0" right="roads/RoadT 3"/>
-  <neighbor left="roads/RoadT 0" right="roads/RoadI 0"/>
+  <neighbor left="roads/RoadI 1" right="Building/EmptyAndBuildings2l 2"/>
   <neighbor left="roads/RoadI 3" right="Building/EmptyAndBuildingsI 1"/>
-  <neighbor left="Building/EmptyAndBuildingsI 1" right="roads/RoadT 1"/>
   <neighbor left="Building/EmptyAndBuildingsI 2" right="roads/EmptyX 1"/>
-  <neighbor left="roads/RoadT 1" right="roads/RoadI 0"/>
-  <neighbor left="roads/RoadT 2" right="roads/RoadI 0"/>
-  <neighbor left="roads/RoadI 0" right="roads/RoadL 3"/>
+  <neighbor left="roads/RoadI 3" right="Building/EmptyAndBuildings2l 1"/>
   <neighbor left="roads/RoadI 0" right="roads/RoadI 2"/>
   <neighbor left="roads/RoadI 0" right="roads/RoadL 3"/>
+  <neighbor left="roads/EmptyX 1" right="roads/RoadI 1"/>
   <neighbor left="roads/RoadI 0" right="roads/RoadL 0"/>
   <neighbor left="roads/RoadI 2" right="roads/RoadI 0"/>
-  <neighbor left="roads/RoadL 2" right="roads/RoadI 0"/>
-  <neighbor left="roads/RoadI 3" right="Building/EmptyAndBuildingsI 0"/>
-  <neighbor left="Building/EmptyAndBuildingsI 0" right="roads/RoadI 3"/>
-  <neighbor left="Building/EmptyAndBuildingsI 1" right="roads/RoadI 3"/>
-  <neighbor left="roads/EmptyX 0" right="Building/EmptyAndBuildings2l 0"/>
-  <neighbor left="roads/EmptyX 1" right="roads/RoadL 2"/>
-  <neighbor left="Building/EmptyAndBuildings2l 1" right="roads/RoadI 3"/>
-  <neighbor left="roads/EmptyX 0" right="roads/RoadT 1"/>
-  <neighbor left="roads/EmptyX 1" right="Building/EmptyAndBuildings2l 0"/>
-  <neighbor left="roads/RoadT 1" right="roads/RoadI 2"/>
-  <neighbor left="roads/RoadI 2" right="roads/RoadT 3"/>
-  <neighbor left="roads/RoadI 3" right="roads/EmptyX 1"/>
-  <neighbor left="Building/EmptyAndBuildings2l 3" right="roads/RoadI 3"/>
-  <neighbor left="Building/EmptyAndBuildings2l 0" right="roads/EmptyX 1"/>
-  <neighbor left="roads/EmptyX 1" right="roads/RoadI 3"/>
-  <neighbor left="roads/RoadI 0" right="roads/RoadT 3"/>
-  <neighbor left="Building/EmptyAndBuildingsI 3" right="roads/RoadI 3"/>
-  <neighbor left="Building/EmptyAndBuildingsI 0" right="roads/RoadI 1"/>
   <neighbor left="roads/EmptyX 0" right="roads/RoadL 2"/>
+  <neighbor left="roads/RoadL 2" right="roads/RoadI 0"/>
+  <neighbor left="roads/RoadL 3" right="roads/EmptyX 1"/>
+  <neighbor left="roads/RoadI 0" right="roads/RoadL 3"/>
+  <neighbor left="roads/RoadL 3" right="roads/EmptyX 0"/>
+  <neighbor left="roads/RoadL 0" right="roads/EmptyX 1"/>
+  <neighbor left="roads/EmptyX 0" right="roads/EmptyX 0"/>
+  <neighbor left="Building/Building20 1" right="roads/RoadI 1"/>
+  <neighbor left="roads/RoadI 2" right="roads/RoadX 1"/>
+  <neighbor left="roads/RoadI 1" right="Building/Building20 3"/>
+  <neighbor left="roads/RoadX 0" right="roads/RoadI 2"/>
+  <neighbor left="roads/RoadX 1" right="roads/RoadI 2"/>
+  <neighbor left="roads/RoadI 2" right="roads/RoadL 0"/>
+  <neighbor left="roads/RoadI 3" right="roads/EmptyX 1"/>
+  <neighbor left="roads/RoadL 1" right="roads/RoadI 2"/>
+  <neighbor left="roads/RoadI 0" right="roads/RoadI 2"/>
+  <neighbor left="roads/RoadI 2" right="roads/RoadI 0"/>
+  <neighbor left="roads/RoadI 1" right="roads/EmptyX 0"/>
+  <neighbor left="roads/RoadI 2" right="roads/RoadL 3"/>
+  <neighbor left="roads/EmptyX 0" right="roads/RoadI 1"/>
+  <neighbor left="roads/EmptyX 1" right="roads/RoadI 3"/>
+  <neighbor left="roads/RoadI 1" right="Building/EmptyAndBuildingsI 3"/>
+  <neighbor left="roads/RoadI 2" right="roads/RoadL 0"/>
+  <neighbor left="Building/EmptyAndBuildingsI 3" right="roads/RoadI 3"/>
   <neighbor left="roads/RoadL 2" right="roads/RoadI 2"/>
-  <neighbor left="roads/RoadI 2" right="roads/RoadT 2"/>
-  <neighbor left="roads/RoadT 2" right="roads/RoadI 0"/>
+  <neighbor left="roads/RoadI 2" right="roads/RoadL 3"/>
 	</neighbors>
 </set>

@@ -185,6 +185,8 @@ public class SimpleTiledModel : Model
 				propagator[d][t1] = new int[ST];
 				for (int st = 0; st < ST; st++) propagator[d][t1][st] = sp[st];
 			}
+		saveBuildings();
+
 	}
 
 
@@ -207,6 +209,18 @@ public class SimpleTiledModel : Model
 		return !periodic && (x < 0 || y < 0 || x >= FMX || y >= FMY);
 	}
 
+	public void saveBuildings()
+	{
+		for (int i = 0; i < T; i++)
+		{
+			{
+				if (tiles[i].Contains("Building"))
+				{
+                    //UnityEngine.Debug.Log(tiles[i] + "int" + i);
+                    buildingsTilesIndexList.Add(i);
+				}
+			}
+		}
 
-
+	}
 }
