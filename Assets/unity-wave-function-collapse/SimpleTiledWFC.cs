@@ -129,6 +129,10 @@ public class SimpleTiledWFC : MonoBehaviour{
     {
 		Model.areBuildingsSaved = true;
     }
+    public void UnlockBuildings()
+    {
+        model.UnlockBuildings();
+    }
 }
 
 
